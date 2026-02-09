@@ -1,0 +1,158 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 21,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "default",
+      "hidden": true,
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "cacheVariables": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "CMAKE_TOOLCHAIN_FILE": {
+          "type": "STRING",
+          "value": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+        }
+      }
+    },
+    {
+      "name": "default-no-vcpkg",
+      "hidden": true,
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/${presetName}",
+      "cacheVariables": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+      }
+    },
+    {
+      "name": "linux-debug",
+      "displayName": "Linux Debug",
+      "description": "Debug build for Linux",
+      "inherits": "default-no-vcpkg",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_CXX_FLAGS_DEBUG": "-g -O0"
+      },
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Linux"
+      }
+    },
+    {
+      "name": "linux-release",
+      "displayName": "Linux Release",
+      "description": "Release build for Linux",
+      "inherits": "default-no-vcpkg",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_CXX_FLAGS_RELEASE": "-O3 -DNDEBUG"
+      },
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Linux"
+      }
+    },
+    {
+      "name": "windows-debug",
+      "displayName": "Windows Debug",
+      "description": "Debug build for Windows",
+      "inherits": "default",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug"
+      },
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      }
+    },
+    {
+      "name": "windows-release",
+      "displayName": "Windows Release",
+      "description": "Release build for Windows",
+      "inherits": "default",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release"
+      },
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Windows"
+      }
+    },
+    {
+      "name": "macos-debug",
+      "displayName": "macOS Debug",
+      "description": "Debug build for macOS",
+      "inherits": "default",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "CMAKE_CXX_FLAGS_DEBUG": "-g -O0"
+      },
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Darwin"
+      }
+    },
+    {
+      "name": "macos-release",
+      "displayName": "macOS Release",
+      "description": "Release build for macOS",
+      "inherits": "default",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_CXX_FLAGS_RELEASE": "-O3 -DNDEBUG"
+      },
+      "condition": {
+        "type": "equals",
+        "lhs": "${hostSystemName}",
+        "rhs": "Darwin"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "linux-debug",
+      "configurePreset": "linux-debug",
+      "displayName": "Linux Debug Build",
+      "description": "Build in Debug mode for Linux"
+    },
+    {
+      "name": "linux-release",
+      "configurePreset": "linux-release",
+      "displayName": "Linux Release Build",
+      "description": "Build in Release mode for Linux"
+    },
+    {
+      "name": "windows-debug",
+      "configurePreset": "windows-debug",
+      "displayName": "Windows Debug Build",
+      "description": "Build in Debug mode for Windows"
+    },
+    {
+      "name": "windows-release",
+      "configurePreset": "windows-release",
+      "displayName": "Windows Release Build",
+      "description": "Build in Release mode for Windows"
+    },
+    {
+      "name": "macos-debug",
+      "configurePreset": "macos-debug",
+      "displayName": "macOS Debug Build",
+      "description": "Build in Debug mode for macOS"
+    },
+    {
+      "name": "macos-release",
+      "configurePreset": "macos-release",
+      "displayName": "macOS Release Build",
+      "description": "Build in Release mode for macOS"
+    }
+  ]
+}

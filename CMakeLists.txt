@@ -1,0 +1,63 @@
+cmake_minimum_required(VERSION 3.21)
+
+# Set the project name and version
+project(TestProject VERSION 1.0.0 LANGUAGES CXX)
+
+# Specify the C++ standard
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+# Export compile commands for tooling (clangd, etc.)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+# Add source files
+set(SOURCES
+    src/main.cpp
+    src/utils.cpp
+)
+
+set(HEADERS
+    src/utils.h
+)
+
+# Create the executable
+add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
+
+# Set include directories
+target_include_directories(${PROJECT_NAME} PRIVATE 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src
+)
+
+# Platform-specific settings
+if(WIN32)
+    # Windows-specific settings
+    target_compile_definitions(${PROJECT_NAME} PRIVATE WIN32_LEAN_AND_MEAN)
+elseif(UNIX AND NOT APPLE)
+    # Linux-specific settings
+    target_link_libraries(${PROJECT_NAME} PRIVATE pthread)
+elseif(APPLE)
+    # macOS-specific settings
+    target_compile_definitions(${PROJECT_NAME} PRIVATE __APPLE__)
+endif()
+
+# Compiler warnings
+if(MSVC)
+    target_compile_options(${PROJECT_NAME} PRIVATE /W4 /WX-)
+else()
+    target_compile_options(${PROJECT_NAME} PRIVATE 
+        -Wall -Wextra -Wpedantic
+    )
+endif()
+
+# Debug/Release specific settings
+if(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    target_compile_definitions(${PROJECT_NAME} PRIVATE DEBUG_BUILD)
+else()
+    target_compile_definitions(${PROJECT_NAME} PRIVATE NDEBUG)
+endif()
+
+# Installation rules
+install(TARGETS ${PROJECT_NAME}
+    RUNTIME DESTINATION bin
+)

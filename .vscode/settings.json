@@ -1,0 +1,21 @@
+{
+  "cmake.configureOnOpen": false,
+  "cmake.useCMakePresets": "always",
+  "cmake.sourceDirectory": "${workspaceFolder}",
+  "cmake.buildDirectory": "${workspaceFolder}/build/${presetName}",
+  "files.associations": {
+    "*.h": "cpp",
+    "*.cpp": "cpp",
+    "*.hpp": "cpp"
+  },
+  "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+  "C_Cpp.default.compileCommands": "${workspaceFolder}/build/linux-debug/compile_commands.json",
+  "[cpp]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "[c]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  }
+}

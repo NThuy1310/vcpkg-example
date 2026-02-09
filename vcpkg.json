@@ -1,0 +1,9 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+  "name": "test-project",
+  "version": "1.0.0",
+  "description": "A cross-platform C++ project using CMake, Ninja, and vcpkg",
+  "dependencies": [
+  ],
+  "builtin-baseline": "latest"
+}

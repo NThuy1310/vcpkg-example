@@ -1,0 +1,9 @@
+# vcpkg Configuration
+{
+  "default-registry": {
+    "kind": "git",
+    "repository": "https://github.com/microsoft/vcpkg",
+    "baseline": "latest"
+  },
+  "registries": []
+}
