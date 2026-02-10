@@ -7,7 +7,7 @@ A cross-platform C++ project using CMake, CMakePresets, Ninja, and vcpkg.
 - **CMake** 3.21 or higher
 - **Ninja** build system
 - **vcpkg** package manager (optional but recommended)
-- **C++17** compatible compiler (GCC, Clang, or MSVC)
+- **C++23** compatible compiler (GCC, Clang, or MSVC)
 - **VS Code** with recommended extensions
 
 ### Installing Required Tools (Linux/Ubuntu)
@@ -27,8 +27,8 @@ g++ --version
 
 1. Clone vcpkg:
 ```bash
-git clone https://github.com/microsoft/vcpkg.git
-cd vcpkg
+git clone https://github.com/microsoft/vcpkg.git ~/vcpkg
+cd ~/vcpkg
 ```
 
 2. Bootstrap vcpkg:
@@ -60,7 +60,7 @@ sudo apt install build-essential cmake ninja-build git
 rm -rf build
 ```
 
-### Using CMake Presets (Recommended)
+### Using CMake Presets (Example in Linux)
 
 #### Configure
 ```bash
@@ -103,28 +103,6 @@ cmake --build --preset linux-release
 
 # Release build
 ./build/linux-release/TestProject
-
-# With arguments
-./build/linux-debug/TestProject Alice Bob
-```
-
-## Project Structure
-
-```
-test-prj/
-├── .vscode/              # VS Code configuration
-│   ├── extensions.json   # Recommended extensions
-│   ├── launch.json       # Debug configurations
-│   ├── settings.json     # Workspace settings
-│   └── tasks.json        # Build tasks
-├── src/                  # Source files
-│   ├── main.cpp
-│   ├── utils.h
-│   └── utils.cpp
-├── CMakeLists.txt        # CMake configuration
-├── CMakePresets.json     # CMake presets for different platforms
-├── vcpkg.json            # vcpkg manifest
-└── README.md             # This file
 ```
 
 ## Cross-Platform Support

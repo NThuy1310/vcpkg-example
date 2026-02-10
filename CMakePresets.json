@@ -32,7 +32,7 @@
       "name": "linux-debug",
       "displayName": "Linux Debug",
       "description": "Debug build for Linux",
-      "inherits": "default-no-vcpkg",
+      "inherits": "default",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Debug",
         "CMAKE_CXX_FLAGS_DEBUG": "-g -O0"
@@ -47,10 +47,10 @@
       "name": "linux-release",
       "displayName": "Linux Release",
       "description": "Release build for Linux",
-      "inherits": "default-no-vcpkg",
+      "inherits": "default",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release",
-        "CMAKE_CXX_FLAGS_RELEASE": "-O3 -DNDEBUG"
+        "CMAKE_CXX_FLAGS_RELEASE": "-O2 -DNDEBUG"
       },
       "condition": {
         "type": "equals",
@@ -108,7 +108,7 @@
       "inherits": "default",
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release",
-        "CMAKE_CXX_FLAGS_RELEASE": "-O3 -DNDEBUG"
+        "CMAKE_CXX_FLAGS_RELEASE": "-O2 -DNDEBUG"
       },
       "condition": {
         "type": "equals",
