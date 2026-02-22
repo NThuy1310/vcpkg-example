@@ -1,12 +1,15 @@
 cmake_minimum_required(VERSION 3.21)
 
 # Set the project name and version
-project(TestProject VERSION 1.0.0 LANGUAGES CXX)
+project(Tetris VERSION 1.0.0 LANGUAGES CXX)
 
 # Specify the C++ standard
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+
+# Require dependencies
+find_package(SFML COMPONENTS Graphics Window System Audio REQUIRED)
 
 # Add source files
 set(SOURCES
@@ -48,6 +51,9 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug")
 else()
     target_compile_definitions(${PROJECT_NAME} PRIVATE NDEBUG)
 endif()
+
+# Link libraries
+target_link_libraries(${PROJECT_NAME} PRIVATE SFML::Graphics SFML::Window SFML::System SFML::Audio)
 
 # Installation rules
 install(TARGETS ${PROJECT_NAME}

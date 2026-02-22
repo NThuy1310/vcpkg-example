@@ -7,7 +7,8 @@
       "command": "cmake",
       "args": [
         "--preset",
-        "linux-debug"
+        "linux-debug",
+        "-DCMAKE_CXX_COMPILER=/usr/bin/g++-11"
       ],
       "group": "build",
       "problemMatcher": [],
@@ -19,7 +20,8 @@
       "command": "cmake",
       "args": [
         "--preset",
-        "linux-release"
+        "linux-release",
+        "-DCMAKE_CXX_COMPILER=/usr/bin/g++-11"
       ],
       "group": "build",
       "problemMatcher": [],
@@ -87,7 +89,7 @@
     {
       "label": "Run (Debug)",
       "type": "shell",
-      "command": "${workspaceFolder}/build/linux-debug/TestProject",
+      "command": "${workspaceFolder}/build/linux-debug/Tetris",
       "group": "test",
       "problemMatcher": [],
       "detail": "Run the Debug executable",
@@ -96,7 +98,7 @@
     {
       "label": "Run (Release)",
       "type": "shell",
-      "command": "${workspaceFolder}/build/linux-release/TestProject",
+      "command": "${workspaceFolder}/build/linux-release/Tetris",
       "group": "test",
       "problemMatcher": [],
       "detail": "Run the Release executable",

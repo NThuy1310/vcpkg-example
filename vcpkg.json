@@ -5,7 +5,8 @@
   "description": "A cross-platform C++ project using CMake, Ninja, and vcpkg",
   "dependencies": [
     "fmt",
-    "spdlog"
+    "spdlog",
+    "sfml"
   ],
   "builtin-baseline": "b4927fbadd82f2b24d851e9fba39eee482413889"
 }

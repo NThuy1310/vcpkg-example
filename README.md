@@ -37,6 +37,7 @@ cd ~/vcpkg
 
 3. Set the `VCPKG_ROOT` environment variable:
 ```bash
+sudo nano ~/.bashrc
 export VCPKG_ROOT=/path/to/vcpkg
 ```
 
