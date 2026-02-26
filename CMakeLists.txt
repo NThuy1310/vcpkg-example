@@ -11,18 +11,20 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 # Require dependencies
 find_package(SFML COMPONENTS Graphics Window System Audio REQUIRED)
 
-# Add source files
-set(SOURCES
-    src/main.cpp
-)
+# Collect all .cpp source files recursively under src/
+file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS src/*.cpp)
 
 # Create the executable
 add_executable(${PROJECT_NAME} ${SOURCES})
 
-# Set include directories
-target_include_directories(${PROJECT_NAME} PRIVATE 
+# Set include directories (src/ is the root so includes work as "core/Board.hpp" etc.)
+target_include_directories(${PROJECT_NAME} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src
 )
+
+# Copy assets directory to the build output so the executable can find them at runtime
+file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/assets
+     DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
 # Platform-specific settings
 if(WIN32)

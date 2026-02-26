@@ -8,7 +8,7 @@
       "args": [
         "--preset",
         "linux-debug",
-        "-DCMAKE_CXX_COMPILER=/usr/bin/g++-11"
+        "-DCMAKE_CXX_COMPILER=/usr/bin/g++-13"
       ],
       "group": "build",
       "problemMatcher": [],
@@ -21,7 +21,7 @@
       "args": [
         "--preset",
         "linux-release",
-        "-DCMAKE_CXX_COMPILER=/usr/bin/g++-11"
+        "-DCMAKE_CXX_COMPILER=/usr/bin/g++-13"
       ],
       "group": "build",
       "problemMatcher": [],
