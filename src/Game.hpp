@@ -4,7 +4,7 @@
 #include <string>
 #include <functional>
 #include <SFML/Graphics/RenderWindow.hpp>
-#include "systems/AssetManager.hpp"
+#include "systems/FontManager.hpp"
 #include "systems/AudioManager.hpp"
 #include "systems/SettingsManager.hpp"
 #include "states/IGameState.hpp"
@@ -38,9 +38,12 @@ public:
 
     // ---- Shared resource accessors -------------------------------------
     [[nodiscard]] sf::RenderWindow &window() { return m_window; }
-    [[nodiscard]] AssetManager &assets() { return m_assets; }
+    [[nodiscard]] FontManager &fonts() { return m_fonts; }
     [[nodiscard]] AudioManager &audio() { return m_audio; }
     [[nodiscard]] SettingsManager &settings() { return m_settings; }
+
+    // ---- Window management -----------------------------------------------
+    void rebuildWindow();
 
     // ---- High scores ---------------------------------------------------
     [[nodiscard]] const std::vector<HighScoreEntry> &highScores() const { return m_highScores; }
@@ -50,7 +53,7 @@ public:
 
 private:
     sf::RenderWindow m_window;
-    AssetManager m_assets;
+    FontManager m_fonts;
     AudioManager m_audio;
     SettingsManager m_settings;
 
@@ -78,7 +81,7 @@ private:
     void handleEvents();
     void update(sf::Time dt);
     void render();
-    void rebuildWindow();
+
 
     static constexpr const char *SETTINGS_FILE = "settings.cfg";
     static constexpr const char *HIGHSCORES_FILE = "highscores.dat";

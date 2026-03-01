@@ -18,11 +18,13 @@ Game::Game()
     rebuildWindow();
 
     // Load font
-    if (!m_assets.loadFont(FontId::Main, "assets/fonts/mono.ttf"))
+    if (!m_fonts.loadFont(FontId::Main, "assets/fonts/mono.ttf"))
         std::cerr << "Warning: main font not found - text will be blank\n";
 
     // Load audio (missing files are non-fatal)
-    m_audio.loadAll();
+    bool audioLoaded = m_audio.loadAll();
+    if (!audioLoaded)
+        std::cerr << "Warning: audio files not found - audio will be disabled\n";
     m_audio.setMusicVolume(m_settings.get().musicVolume);
 
     loadHighScores();
